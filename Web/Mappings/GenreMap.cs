@@ -12,6 +12,8 @@ namespace MvcMusicStore.Mappings
         public GenreMap()
         {
             Table("Genres");
+            OptimisticLock.Dirty();
+            DynamicUpdate();
             Id(x => x.Id).Column("GenreId");
             Map(x => x.Name);
             Map(x => x.Description);

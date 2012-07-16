@@ -12,6 +12,8 @@ namespace MvcMusicStore.Mappings
         public OrderDetialMap()
         {
             Table("OrderDetails");
+            OptimisticLock.Dirty();
+            DynamicUpdate();
             Id(x => x.Id,"OrderDetailId");
             Map(x => x.Quantity);
             Map(x => x.UnitPrice);

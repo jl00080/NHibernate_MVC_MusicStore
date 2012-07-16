@@ -12,6 +12,8 @@ namespace MvcMusicStore.Mappings
         public CartMap()
         {
             Table("Carts");
+            OptimisticLock.Dirty();
+            DynamicUpdate();
             Id(x => x.Id,"RecordId");
             Map(x => x.CartId);
             Map(x => x.Count);

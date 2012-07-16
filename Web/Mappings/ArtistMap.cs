@@ -12,6 +12,8 @@ namespace MvcMusicStore.Mappings
         public ArtistMap()
         {
             Table("Artists");
+            OptimisticLock.Dirty();
+            DynamicUpdate();
             Id(x => x.Id).Column("ArtistId");
             Map(x => x.Name);
             HasMany(x => x.Albums).Inverse().Cascade.All();

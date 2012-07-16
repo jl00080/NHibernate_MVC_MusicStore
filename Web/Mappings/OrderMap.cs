@@ -12,6 +12,8 @@ namespace MvcMusicStore.Mappings
         public OrderMap()
         {
             Table("Orders");
+            OptimisticLock.Dirty();
+            DynamicUpdate();
             Id(x => x.Id, "OrderId");
             Map(x => x.OrderDate);
             Map(x => x.Username);
