@@ -30,7 +30,6 @@ namespace MvcMusicStore.Controllers
                          orderby a.OrderDetails.Count
                          select a;
             return _query.Take(5).ToList();
-
         }
     }
 }

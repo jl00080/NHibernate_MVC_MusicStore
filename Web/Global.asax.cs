@@ -46,12 +46,12 @@ namespace MvcMusicStore
 
             var nhConfig = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2008
-                .ConnectionString(connstr =>connstr.FromConnectionStringWithKey("MusicStoreEntities2"))
+                .ConnectionString(connstr => connstr.FromConnectionStringWithKey("mvcConnStr"))
                 )
                 .Mappings(mappings => mappings.FluentMappings
                 .AddFromAssemblyOf<OrderMap>()
                 )
-                .ExposeConfiguration(c=>c.SetProperty("current_session_context_class","web"))
+                .ExposeConfiguration(c => c.SetProperty("current_session_context_class", "web"))
                 .BuildConfiguration();
             SessionFactory = nhConfig.BuildSessionFactory();
 
