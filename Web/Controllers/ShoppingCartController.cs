@@ -41,11 +41,8 @@ namespace MvcMusicStore.Controllers
         [TransactionFilter]
         public ActionResult AddToCart(int id)
         {
-
             // Retrieve the album from the database
-
             var addedAlbum = _session.Load<NHAlbum>(id);
-                //storeDB.Albums.Single(album => album.AlbumId == id);
 
             // Add it to the shopping cart
             var cart = ShoppingCart.GetCart(this.HttpContext);

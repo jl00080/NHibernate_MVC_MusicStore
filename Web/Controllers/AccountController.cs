@@ -7,6 +7,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using MvcMusicStore.Models;
 using MvcMusicStore.Infrastructure;
+using Mvc3ToolsUpdateWeb_Default.Models;
 
 namespace Mvc3ToolsUpdateWeb_Default.Controllers
 {
@@ -39,7 +40,7 @@ namespace Mvc3ToolsUpdateWeb_Default.Controllers
             if (ModelState.IsValid)
             {
                 
-                //if (Membership.ValidateUser(model.UserName, model.Password))
+               //if (Membership.ValidateUser(model.UserName, model.Password))
                 //For sample work, always authorise user
                 if (!String.IsNullOrEmpty(model.UserName))
                 {
