@@ -39,27 +39,29 @@ namespace Mvc3ToolsUpdateWeb_Default.Controllers
         {
             if (ModelState.IsValid)
             {
-                
-               //if (Membership.ValidateUser(model.UserName, model.Password))
-                //For sample work, always authorise user
-                if (!String.IsNullOrEmpty(model.UserName))
+
+                if (Membership.ValidateUser(model.UserName, model.Password))
                 {
-                    MigrateShoppingCart(model.UserName); 
-                    
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                    if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
-                        && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                    //For sample work, always authorise user
+                    if (!String.IsNullOrEmpty(model.UserName))
                     {
-                        return Redirect(returnUrl);
+                        MigrateShoppingCart(model.UserName);
+
+                        FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                        if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+                            && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        ModelState.AddModelError("", "The user name or password provided is incorrect.");
                     }
-                }
-                else
-                {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
                 }
             }
 
